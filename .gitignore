@@ -171,3 +171,4 @@ cython_debug/
 .pypirc
 # My File
 test.py
+.DS_Store

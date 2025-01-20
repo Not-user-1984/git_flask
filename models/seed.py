@@ -1,6 +1,7 @@
 from faker import Faker
 from .post import db, Post
 
+
 def create_fake_posts(num_posts=20):
     """
     Создает заданное количество тестовых постов с использованием библиотеки Faker.
@@ -13,6 +14,7 @@ def create_fake_posts(num_posts=20):
         )
         db.session.add(post)
     db.session.commit()
+
 
 def delete_all_posts():
     """
