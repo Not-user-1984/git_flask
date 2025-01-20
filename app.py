@@ -11,16 +11,16 @@ db.init_app(app)
 
 
 def initialize_data():
+    """Инициализирует базу данных и создает тестовые посты, если база пуста."""
     with app.app_context():
         db.create_all()
         if Post.query.count() == 0:
             create_fake_posts()
 
 
-
-
 @app.teardown_appcontext
 def cleanup_data(exception=None):
+    """Очищает данные из базы данных при завершении работы приложения."""
     if hasattr(app, 'data_initialized'):
         delete_all_posts()
         delattr(app, 'data_initialized')
@@ -28,11 +28,14 @@ def cleanup_data(exception=None):
 
 @app.route('/')
 def index():
+    """Отображает главную страницу со списком всех постов."""
     posts = Post.query.order_by(Post.created_at.desc()).all()
     return render_template('index.html', posts=posts)
 
+
 # @app.route("/create", methods=["GET", "POST"])
 # def create_post():
+#     """Обрабатывает создание нового поста."""
 #     if request.method == "POST":
 #         title = request.form["title"]
 #         content = request.form["content"]
