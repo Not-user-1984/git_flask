@@ -33,17 +33,17 @@ def index():
     return render_template('index.html', posts=posts)
 
 
-# @app.route("/create", methods=["GET", "POST"])
-# def create_post():
-#     """Обрабатывает создание нового поста."""
-#     if request.method == "POST":
-#         title = request.form["title"]
-#         content = request.form["content"]
-#         post = Post(title=title, content=content)
-#         db.session.add(post)
-#         db.session.commit()
-#         return redirect(url_for("index"))
-#     return render_template("create_post.html")
+@app.route("/create", methods=["GET", "POST"])
+def create_post():
+    """Обрабатывает создание нового поста."""
+    if request.method == "POST":
+        title = request.form["title"]
+        content = request.form["content"]
+        post = Post(title=title, content=content)
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for("index"))
+    return render_template("create_post.html")
 
 
 if __name__ == "__main__":
