@@ -24,7 +24,7 @@ def cleanup_data(exception=None):
     if hasattr(app, 'data_initialized'):
         delete_all_posts()
         delattr(app, 'data_initialized')
-g
+
 
 @app.route('/')
 def index():
