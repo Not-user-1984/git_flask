@@ -20,7 +20,9 @@ def initialize_data():
 
 @app.teardown_appcontext
 def cleanup_data(exception=None):
-    """Очищает данные из базы данных при завершении работы приложения."""
+    """
+    Очищает данные из базы данных при завершении работы приложения.
+    """
     if hasattr(app, 'data_initialized'):
         delete_all_posts()
         delattr(app, 'data_initialized')
