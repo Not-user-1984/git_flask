@@ -11,7 +11,7 @@ db.init_app(app)
 
 
 def initialize_data():
-    """Инициализирует базу данных"""
+    """Инициализирует базу данных и создает тестовые посты, если база пуста."""
     with app.app_context():
         db.create_all()
         if Post.query.count() == 0:
